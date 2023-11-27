@@ -32,7 +32,7 @@ namespace naturdanmark_api.Models
 
         public void ValidateLength()
         {
-            if(Længde>180 | Længde< -180)
+            if(Længde>180 || Længde< -180)
             {
                 throw new ArgumentOutOfRangeException();
             }
@@ -40,7 +40,7 @@ namespace naturdanmark_api.Models
 
         public void ValidateBredde()
         {
-            if(Bredde>90 | Bredde< -90)
+            if(Bredde>90 || Bredde< -90)
             {
                 throw new ArgumentOutOfRangeException();
             }
