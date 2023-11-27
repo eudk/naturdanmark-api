@@ -10,11 +10,11 @@ namespace naturdanmark_api.Models
 
         public DateTime Date { get; set; }
 
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
-        public string Længde { get; set; }
+        public double Længde { get; set; }
 
-        public string Bredde { get; set; }
+        public double Bredde { get; set; }
 
         public string? Billede { get; set; }
 
@@ -32,11 +32,7 @@ namespace naturdanmark_api.Models
 
         public void ValidateLength()
         {
-            if (Længde == null)
-            {
-                throw new ArgumentNullException();
-            }
-            if (Længde == "")
+            if(Længde>180 | Længde< -180)
             {
                 throw new ArgumentOutOfRangeException();
             }
@@ -44,11 +40,7 @@ namespace naturdanmark_api.Models
 
         public void ValidateBredde()
         {
-            if (Bredde == null)
-            {
-                throw new ArgumentNullException();
-            }
-            if (Bredde == "")
+            if(Bredde>90 | Bredde< -90)
             {
                 throw new ArgumentOutOfRangeException();
             }

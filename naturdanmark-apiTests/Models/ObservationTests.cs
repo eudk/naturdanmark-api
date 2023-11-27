@@ -14,9 +14,9 @@ namespace naturdanmark_api.Models.Tests
         [TestMethod()]
         public void ValidateAnimalNameTest()
         {
-            Observation obs1 = new Observation { AnimalName = "", ID = 1, Billede = null, Date = DateTime.Now, Description = null, Bredde = "breede", Længde = "base" };
-            Observation obs2 = new Observation { AnimalName = null, ID = 1, Billede = null, Date = DateTime.Now, Description = null, Bredde = "breede", Længde = "base" };
-            Observation obs3 = new Observation { AnimalName = "Animal", ID = 1, Billede = null, Date = DateTime.Now, Description = null, Bredde = "breede", Længde = "base" };
+            Observation obs1 = new Observation { AnimalName = "", ID = 1, Billede = null, Date = DateTime.Now, Description = null, Bredde = 0, Længde = 0 };
+            Observation obs2 = new Observation { AnimalName = null, ID = 1, Billede = null, Date = DateTime.Now, Description = null, Bredde = 0, Længde = 0 };
+            Observation obs3 = new Observation { AnimalName = "Animal", ID = 1, Billede = null, Date = DateTime.Now, Description = null, Bredde = 0, Længde = 0 };
             obs3.ValidateAnimalName();
             Assert.ThrowsException<ArgumentNullException>(()=>obs2.ValidateAnimalName());
             Assert.ThrowsException<ArgumentOutOfRangeException>(()=>obs1.ValidateAnimalName());
@@ -27,23 +27,36 @@ namespace naturdanmark_api.Models.Tests
         [TestMethod()]
         public void ValidateLengthTest()
         {
-            Observation obs1 = new Observation { AnimalName = "animal", ID = 1, Billede = null, Date = DateTime.Now, Description = null, Bredde = "breede", Længde = null };
-            Observation obs2 = new Observation { AnimalName = "Animal", ID = 1, Billede = null, Date = DateTime.Now, Description = null, Bredde = "breede", Længde = "" };
-            Observation obs3 = new Observation { AnimalName = "Animal", ID = 1, Billede = null, Date = DateTime.Now, Description = null, Bredde = "breede", Længde = "base" };
+            Observation obs1 = new Observation { AnimalName = "animal", ID = 1, Billede = null, Date = DateTime.Now, Description = null, Bredde = 0, Længde = 181 };
+            Observation obs2 = new Observation { AnimalName = "Animal", ID = 1, Billede = null, Date = DateTime.Now, Description = null, Bredde = 0, Længde = -181 };
+            Observation obs3 = new Observation { AnimalName = "Animal", ID = 1, Billede = null, Date = DateTime.Now, Description = null, Bredde = 0, Længde = 180 };
+            Observation obs4 = new Observation { AnimalName = "Animal", ID = 1, Billede = null, Date = DateTime.Now, Description = null, Bredde = 0, Længde = -180 };
+            Observation obs5 = new Observation { AnimalName = "Animal", ID = 1, Billede = null, Date = DateTime.Now, Description = null, Bredde = 0, Længde = -180.1 };
+            Observation obs6 = new Observation { AnimalName = "Animal", ID = 1, Billede = null, Date = DateTime.Now, Description = null, Bredde = 0, Længde = 180.1 };
             obs3.ValidateLength();
-            Assert.ThrowsException<ArgumentNullException>(()=> obs1.ValidateLength());
+            obs4.ValidateLength();
+            Assert.ThrowsException<ArgumentOutOfRangeException>(()=> obs1.ValidateLength());
             Assert.ThrowsException<ArgumentOutOfRangeException>(() => obs2.ValidateLength());
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => obs5.ValidateLength());
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => obs6.ValidateLength());
+
         }
 
         [TestMethod()]
         public void ValidateBreddeTest()
         {
-            Observation obs1 = new Observation { AnimalName = "animal", ID = 1, Billede = null, Date = DateTime.Now, Description = null, Bredde = null, Længde = "base" };
-            Observation obs2 = new Observation { AnimalName = "animal", ID = 1, Billede = null, Date = DateTime.Now, Description = null, Bredde = "", Længde = "base" };
-            Observation obs3 = new Observation { AnimalName = "animal", ID = 1, Billede = null, Date = DateTime.Now, Description = null, Bredde = "breede", Længde = "base" };
+            Observation obs1 = new Observation { AnimalName = "animal", ID = 1, Billede = null, Date = DateTime.Now, Description = null, Bredde = 91, Længde = 0 };
+            Observation obs2 = new Observation { AnimalName = "animal", ID = 1, Billede = null, Date = DateTime.Now, Description = null, Bredde = -91, Længde = 0 };
+            Observation obs3 = new Observation { AnimalName = "animal", ID = 1, Billede = null, Date = DateTime.Now, Description = null, Bredde = 90, Længde = 0 };
+            Observation obs4 = new Observation { AnimalName = "animal", ID = 1, Billede = null, Date = DateTime.Now, Description = null, Bredde = -90, Længde = 0 };
+            Observation obs5 = new Observation { AnimalName = "animal", ID = 1, Billede = null, Date = DateTime.Now, Description = null, Bredde = 90.1, Længde = 0 };
+            Observation obs6 = new Observation { AnimalName = "animal", ID = 1, Billede = null, Date = DateTime.Now, Description = null, Bredde = -90.1, Længde = 0 };
             obs3.ValidateBredde();
-            Assert.ThrowsException<ArgumentNullException>(() => obs1.ValidateBredde());
+            obs4.ValidateBredde();
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => obs1.ValidateBredde());
             Assert.ThrowsException<ArgumentOutOfRangeException>( ()=> obs2.ValidateBredde());
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => obs5.ValidateBredde());
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => obs6.ValidateBredde());
 
         }
     }
