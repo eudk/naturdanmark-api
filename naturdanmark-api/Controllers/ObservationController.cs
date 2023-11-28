@@ -32,7 +32,7 @@ namespace naturdanmark_api.Controllers
             Observation? obs = _observationrepo.Getbyid(id);
             if (obs == null)
             {
-                return BadRequest();
+                return NotFound();
             }
             return Ok(obs);
 
