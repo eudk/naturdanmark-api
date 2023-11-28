@@ -12,19 +12,34 @@ public class ObservationsRepoDB
         context = dbcontext;
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="obs"></param>
+    /// <returns></returns>
     public Observation Add(Observation obs)
     {
+        obs.ValidateAll();
         obs.ID = 0;
         context.Observations.Add(obs);
         context.SaveChanges();
         return obs;
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <returns></returns>
     public List<Observation> GetAll()
     {
         return new List<Observation>(context.Observations);
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
     public Observation? Getbyid(int id)
     {
         return context.Observations.FirstOrDefault(i => i.ID == id);

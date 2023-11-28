@@ -42,10 +42,10 @@ namespace naturdanmark_api.Repositories.Tests
         [TestMethod()]
         public void GetbyidTest()
         {
-            ObservationsRepo repo = new ObservationsRepo();
-            Observation? obs = repo.Getbyid(2);
-            Observation obsmimic = repo.GetAll()[1];
-            Observation? obsNull = repo.Getbyid(99);
+            
+            Observation? obs = _repo.Getbyid(2);
+            Observation obsmimic = _repo.GetAll()[1];
+            Observation? obsNull = _repo.Getbyid(99);
             Assert.AreEqual(obsmimic, obs);
             Assert.IsNull(obsNull);
         }

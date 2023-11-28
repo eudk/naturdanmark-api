@@ -3,7 +3,7 @@ using naturdanmark_api.Models;
 
 namespace naturdanmark_api.Context
 {
-    public class ObservationContext:DbContext
+    public class ObservationContext:DbContext //Anders
     {
         public ObservationContext(DbContextOptions<ObservationContext> options) : base(options) 
         { 

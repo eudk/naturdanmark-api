@@ -7,7 +7,7 @@ namespace naturdanmark_api.Controllers
 {
     [ApiController]
     [Route("Api/[Controller]")]
-    public class ObservationController : ControllerBase
+    public class ObservationController : ControllerBase //Anders
     {
         private ObservationsRepoDB _observationrepo;
 
@@ -16,6 +16,10 @@ namespace naturdanmark_api.Controllers
             _observationrepo = repo;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -24,6 +28,11 @@ namespace naturdanmark_api.Controllers
             return _observationrepo.GetAll();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("id")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -39,6 +48,11 @@ namespace naturdanmark_api.Controllers
 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="obs"></param>
+        /// <returns></returns>
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         public ActionResult<Observation> Post([FromBody] Observation obs)

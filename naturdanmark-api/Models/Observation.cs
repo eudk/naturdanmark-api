@@ -18,6 +18,11 @@ namespace naturdanmark_api.Models
 
         public string? Picture { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
         public void ValidateAnimalName()
         {
             if(AnimalName==null)
@@ -30,6 +35,10 @@ namespace naturdanmark_api.Models
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
         public void ValidateLength()
         {
             if(longtitudes > 180 || longtitudes < -180)
@@ -38,12 +47,26 @@ namespace naturdanmark_api.Models
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
         public void ValidateBredde()
         {
             if(lattitudes > 90 || lattitudes < -90)
             {
                 throw new ArgumentOutOfRangeException();
             }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void ValidateAll()
+        {
+            ValidateAnimalName();
+            ValidateBredde();
+            ValidateLength();
         }
     }
 }
