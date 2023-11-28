@@ -32,7 +32,7 @@ namespace naturdanmark_api.Models
 
         public void ValidateLength()
         {
-            if(lattitudes > 180 || lattitudes < -180)
+            if(longtitudes > 180 || longtitudes < -180)
             {
                 throw new ArgumentOutOfRangeException();
             }
