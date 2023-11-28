@@ -55,9 +55,22 @@ namespace naturdanmark_api.Controllers
         /// <returns></returns>
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public ActionResult<Observation> Post([FromBody] Observation obs)
         {
-            return Created($"/+{obs.ID}", _observationrepo.Add(obs));
+            try
+            {
+                Observation Createdobs = _observationrepo.Add(obs);
+                return Created($"{obs.ID}", obs);
+            }
+            catch(ArgumentNullException)
+            {
+                return BadRequest();
+            }
+            catch(ArgumentOutOfRangeException)
+            {
+                return BadRequest();
+            }
         }
     }
 }
