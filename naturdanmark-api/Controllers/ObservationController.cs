@@ -1,14 +1,20 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using naturdanmark_api.Models;
 using naturdanmark_api.Repositories;
+using naturdanmark_api.Context;
 
 namespace naturdanmark_api.Controllers
 {
     [ApiController]
     [Route("Api/[Controller]")]
-    public class ObservationController:ControllerBase
+    public class ObservationController : ControllerBase
     {
-        private ObservationsRepo _observationrepo = new();
+        private ObservationsRepoDB _observationrepo;
+
+        public ObservationController(ObservationsRepoDB repo)
+        {
+            _observationrepo = repo;
+        }
 
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -21,16 +27,16 @@ namespace naturdanmark_api.Controllers
         [HttpGet("id")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<Observation> GetObservationById(int id) 
+        public ActionResult<Observation> GetObservationById(int id)
         {
             Observation? obs = _observationrepo.Getbyid(id);
-            if(obs==null)
+            if (obs == null)
             {
                 return BadRequest();
             }
             return Ok(obs);
-        
-        
+
+
         }
 
         [HttpPost]

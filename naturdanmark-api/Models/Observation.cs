@@ -12,11 +12,11 @@ namespace naturdanmark_api.Models
 
         public string? Description { get; set; }
 
-        public double Længde { get; set; }
+        public double longtitudes { get; set; }
 
-        public double Bredde { get; set; }
+        public double lattitudes { get; set; }
 
-        public string? Billede { get; set; }
+        public string? Picture { get; set; }
 
         public void ValidateAnimalName()
         {
@@ -32,7 +32,7 @@ namespace naturdanmark_api.Models
 
         public void ValidateLength()
         {
-            if(Længde>180 || Længde< -180)
+            if(lattitudes > 180 || lattitudes < -180)
             {
                 throw new ArgumentOutOfRangeException();
             }
@@ -40,7 +40,7 @@ namespace naturdanmark_api.Models
 
         public void ValidateBredde()
         {
-            if(Bredde>90 || Bredde< -90)
+            if(lattitudes > 90 || lattitudes < -90)
             {
                 throw new ArgumentOutOfRangeException();
             }

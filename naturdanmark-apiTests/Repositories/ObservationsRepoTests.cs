@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using naturdanmark_api.Models;
+using Microsoft.EntityFrameworkCore;
+using naturdanmark_api.Context;
 
 namespace naturdanmark_api.Repositories.Tests
 {
@@ -18,7 +20,7 @@ namespace naturdanmark_api.Repositories.Tests
         {
             ObservationsRepo repo = new ObservationsRepo();
             int before=repo.GetAll().Count();
-            repo.Add(new Observation { AnimalName = "animal", ID = 1, Billede = null, Date = DateTime.Now, Description = null, Bredde = 0, Længde = 0 });
+            repo.Add(new Observation { AnimalName = "animal", ID = 1, Picture = null, Date = DateTime.Now, Description = null, lattitudes = 0, longtitudes = 0 });
             Assert.AreEqual(before + 1, repo.GetAll().Count());
         }
 

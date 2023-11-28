@@ -9,9 +9,9 @@ public class ObservationsRepo
 
     public ObservationsRepo()
     {
-        Observations.Add(new Observation { AnimalName = "animal", ID = _idcounter++, Billede = null, Date = DateTime.Now, Description = "A", Bredde = 0, Længde = 0 });
-        Observations.Add(new Observation { AnimalName = "animal", ID = _idcounter++, Billede = null, Date = DateTime.Now, Description = null, Bredde = 0, Længde = 0 });
-        Observations.Add(new Observation { AnimalName = "animal", ID = _idcounter++, Billede = null, Date = DateTime.Now, Description = null, Bredde = 0, Længde = 0 });
+        Observations.Add(new Observation { AnimalName = "animal", ID = _idcounter++, Picture = null, Date = DateTime.Now, Description = "A", lattitudes = 0, longtitudes = 0 });
+        Observations.Add(new Observation { AnimalName = "animal", ID = _idcounter++, Picture = null, Date = DateTime.Now, Description = null, lattitudes = 0, longtitudes = 0 });
+        Observations.Add(new Observation { AnimalName = "animal", ID = _idcounter++, Picture = null, Date = DateTime.Now, Description = null, lattitudes = 0, longtitudes = 0 });
 
     }
 
