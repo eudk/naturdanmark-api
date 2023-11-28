@@ -35,7 +35,7 @@ namespace naturdanmark_api.Repositories.Tests
         public void AddTest()
         {
             int before=_repo.GetAll().Count();
-            _repo.Add(new Observation { AnimalName = "animal", ID = 1, Picture = null, Date = DateTime.Now, Description = "A", lattitudes = 0, longtitudes = 0 });
+            _repo.Add(new Observation { AnimalName = "animal", ID = 1, Picture = null, Date = DateTime.Now, Description = "A", Latitude = 0, Longitude = 0 });
             Assert.AreEqual(before+1, _repo.GetAll().Count());
         }
 

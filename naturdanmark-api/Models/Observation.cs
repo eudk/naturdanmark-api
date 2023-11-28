@@ -12,9 +12,9 @@ namespace naturdanmark_api.Models
 
         public string? Description { get; set; }
 
-        public double longtitudes { get; set; }
+        public double Longitude { get; set; }
 
-        public double lattitudes { get; set; }
+        public double Latitude { get; set; }
 
         public string? Picture { get; set; }
 
@@ -36,12 +36,12 @@ namespace naturdanmark_api.Models
         }
 
         /// <summary>
-        /// 
+        /// Kaster en exception hvis Longtitudes ikke er mellem 180 og -180 grader
         /// </summary>
-        /// <exception cref="ArgumentOutOfRangeException"></exception>
-        public void ValidateLength()
+        /// <exception cref="ArgumentOutOfRangeException"> kaster exception videre</exception>
+        public void ValidateLongtitudes()
         {
-            if(longtitudes > 180 || longtitudes < -180)
+            if(Longitude > 180 || Longitude < -180)
             {
                 throw new ArgumentOutOfRangeException();
             }
@@ -51,22 +51,22 @@ namespace naturdanmark_api.Models
         /// en funktion som bruges til at se om Lattiude er mellem 90 og -90 grader
         /// </summary>
         /// <exception cref="ArgumentOutOfRangeException">laver en exception hvis Lattiude er mellem 90 og -90 grader</exception>
-        public void ValidateBredde()
+        public void ValidateLattitudes()
         {
-            if(lattitudes > 90 || lattitudes < -90)
+            if(Latitude > 90 || Latitude < -90)
             {
                 throw new ArgumentOutOfRangeException();
             }
         }
 
         /// <summary>
-        /// 
+        /// Funktion som bruges til at validere en observation ved at køre alle validere funktioner igennem
         /// </summary>
         public void ValidateAll()
         {
             ValidateAnimalName();
-            ValidateBredde();
-            ValidateLength();
+            ValidateLattitudes();
+            ValidateLongtitudes();
         }
     }
 }

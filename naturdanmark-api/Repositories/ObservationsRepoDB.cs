@@ -13,10 +13,10 @@ public class ObservationsRepoDB
     }
 
     /// <summary>
-    /// 
+    /// Tilføjer en observation til databasen
     /// </summary>
-    /// <param name="obs"></param>
-    /// <returns></returns>
+    /// <param name="obs">indeholder den observation som skal tilføjes</param>
+    /// <returns> returnere en observation</returns>
     public Observation Add(Observation obs)
     {
         obs.ValidateAll();
@@ -27,19 +27,19 @@ public class ObservationsRepoDB
     }
 
     /// <summary>
-    /// 
+    /// Laver en liste af observationer ud fra Observationstabellen i databasen
     /// </summary>
-    /// <returns></returns>
+    /// <returns>returnere en liste af observationer</returns>
     public List<Observation> GetAll()
     {
         return new List<Observation>(context.Observations);
     }
 
     /// <summary>
-    /// 
+    /// Finder en specifik Observation i databasen
     /// </summary>
-    /// <param name="id"></param>
-    /// <returns></returns>
+    /// <param name="id">Et id som skal eksistere i observationsdatabasen for at hente en observation</param>
+    /// <returns>returnere en observation</returns>
     public Observation? Getbyid(int id)
     {
         return context.Observations.FirstOrDefault(i => i.ID == id);
