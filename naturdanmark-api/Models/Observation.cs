@@ -48,9 +48,9 @@ namespace naturdanmark_api.Models
         }
 
         /// <summary>
-        /// 
+        /// en funktion som bruges til at se om Lattiude er mellem 90 og -90 grader
         /// </summary>
-        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        /// <exception cref="ArgumentOutOfRangeException">laver en exception hvis Lattiude er mellem 90 og -90 grader</exception>
         public void ValidateBredde()
         {
             if(lattitudes > 90 || lattitudes < -90)

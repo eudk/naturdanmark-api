@@ -33,7 +33,7 @@ namespace naturdanmark_api.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("id")]
+        [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<Observation> GetObservationById(int id)
