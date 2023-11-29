@@ -19,10 +19,10 @@ namespace naturdanmark_api.Models
         public string? Picture { get; set; }
 
         /// <summary>
-        /// 
+        /// Kaster en Exception hvis AnimalName i en Observation er en tom string eller lig med Null
         /// </summary>
-        /// <exception cref="ArgumentNullException"></exception>
-        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        /// <exception cref="ArgumentNullException">hvis AnimalName er lig med Nul kastes denne exception</exception>
+        /// <exception cref="ArgumentOutOfRangeException">hvis AnimalName er en tom string kastes denne exception</exception>
         public void ValidateAnimalName()
         {
             if(AnimalName==null)
@@ -39,7 +39,7 @@ namespace naturdanmark_api.Models
         /// Kaster en exception hvis Longtitudes ikke er mellem 180 og -180 grader
         /// </summary>
         /// <exception cref="ArgumentOutOfRangeException"> kaster exception videre</exception>
-        public void ValidateLongtitudes()
+        public void ValidateLongitude()
         {
             if(Longitude > 180 || Longitude < -180)
             {
@@ -51,7 +51,7 @@ namespace naturdanmark_api.Models
         /// en funktion som bruges til at se om Lattiude er mellem 90 og -90 grader
         /// </summary>
         /// <exception cref="ArgumentOutOfRangeException">laver en exception hvis Lattiude er mellem 90 og -90 grader</exception>
-        public void ValidateLattitudes()
+        public void ValidateLatitude()
         {
             if(Latitude > 90 || Latitude < -90)
             {
@@ -65,8 +65,8 @@ namespace naturdanmark_api.Models
         public void ValidateAll()
         {
             ValidateAnimalName();
-            ValidateLattitudes();
-            ValidateLongtitudes();
+            ValidateLatitude();
+            ValidateLongitude();
         }
     }
 }

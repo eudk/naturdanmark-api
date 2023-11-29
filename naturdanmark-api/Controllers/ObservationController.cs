@@ -17,9 +17,9 @@ namespace naturdanmark_api.Controllers
         }
 
         /// <summary>
-        /// 
+        /// Bruger ObservationsRepoDB til at hente en liste af observationer
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Returnere statuskode 200 hvis der er data og 204 hvis der ikke er data</returns>
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -29,10 +29,10 @@ namespace naturdanmark_api.Controllers
         }
 
         /// <summary>
-        /// 
+        /// Returnerer en Observation hvis den findes i ObservationsTabellen
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// <param name="id">Id bruges til at finde Observation i Observationstabellen</param>
+        /// <returns> Returnere 200 hvis Observationen findes og 404 hvis Observationen ikke findes</returns>
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -49,7 +49,11 @@ namespace naturdanmark_api.Controllers
         }
 
 
-
+        /// <summary>
+        /// Gemmer en Observation i ObservationsTabellen
+        /// </summary>
+        /// <param name="obs">indeholder den observation som skal gemmes</param>
+        /// <returns>Returner fejlkode 201 hvis en observation gemmes og sender fejlkode 400 hvis der er noge</returns>
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
