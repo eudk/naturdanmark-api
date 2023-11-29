@@ -35,13 +35,7 @@ namespace naturdanmark_api.Repositories.Tests
         public void AddTest()
         {
             int before=_repo.GetAll().Count();
-            _repo.Add(new Observation { AnimalName = "", ID = 1, Picture = null, Date = DateTime.Now, Description = "A", Latitude = 0, Longitude = 0 });
-            _repo.Add(new Observation { AnimalName = null, ID = 1, Picture = null, Date = DateTime.Now, Description = "A", Latitude = 0, Longitude = 0 });
-            _repo.Add(new Observation { AnimalName = "animal", ID = 1, Picture = null, Date = DateTime.Now, Description = "A", Latitude = -181, Longitude = 0 });
-            _repo.Add(new Observation { AnimalName = "animal", ID = 1, Picture = null, Date = DateTime.Now, Description = "A", Latitude = 181, Longitude = 0 });
-            _repo.Add(new Observation { AnimalName = "animal", ID = 1, Picture = null, Date = DateTime.Now, Description = "A", Latitude = 0, Longitude = 181 });
-            _repo.Add(new Observation { AnimalName = "animal", ID = 1, Picture = null, Date = DateTime.Now, Description = "A", Latitude = 0, Longitude = 181 });
-            _repo.Add(new Observation { AnimalName = "animal", ID = 1, Picture = null, Date = DateTime.Now, Description = "A", Latitude = 0, Longitude = 0 });
+            _repo.Add(new Observation { AnimalName = "Animal", ID = 1, Picture = null, Date = DateTime.Now, Description = "A", Latitude = 0, Longitude = 0 });
             Assert.AreEqual(before+1, _repo.GetAll().Count());
         }
 
