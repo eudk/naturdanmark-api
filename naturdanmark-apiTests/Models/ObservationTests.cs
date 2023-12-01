@@ -74,5 +74,16 @@ namespace naturdanmark_api.Models.Tests
             Assert.ThrowsException<ArgumentOutOfRangeException>(() => obs3.ValidateDateTime());
             Assert.ThrowsException<ArgumentOutOfRangeException>(() => obs4.ValidateDateTime());
         }
+
+        [TestMethod]
+        public void TestValidateUserName()
+        {
+            Observation obs1 = new Observation { UserName = "" };
+            Observation obs2 = new Observation { UserName = "user" };
+            Observation obs3 = new Observation { UserName = null };
+            obs2.ValidateUsername();
+            Assert.ThrowsException<ArgumentOutOfRangeException>(obs1.ValidateUsername);
+            Assert.ThrowsException<ArgumentNullException>(obs3.ValidateUsername);
+        }
     }
 }

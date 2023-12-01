@@ -21,6 +21,8 @@ namespace naturdanmark_api.Models
 
         public DateTime PostingDate { get; set; }
 
+        public string UserName { get; set; }
+
         /// <summary>
         /// Kaster en Exception hvis AnimalName i en Observation er en tom string eller lig med Null
         /// </summary>
@@ -74,6 +76,18 @@ namespace naturdanmark_api.Models
             }
         }
 
+        public void ValidateUsername()
+        {
+            if (UserName == null)
+            {
+                throw new ArgumentNullException();
+            }
+            if (UserName == "")
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+        }
+
         /// <summary>
         /// Funktion som bruges til at validere en observation ved at køre alle validere funktioner igennem
         /// </summary>
@@ -83,6 +97,7 @@ namespace naturdanmark_api.Models
             ValidateLatitude();
             ValidateLongitude();
             ValidateDateTime();
+            ValidateUsername();
         }
     }
 }

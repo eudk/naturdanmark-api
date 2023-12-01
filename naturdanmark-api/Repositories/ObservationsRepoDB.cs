@@ -31,7 +31,7 @@ public class ObservationsRepoDB
     /// Laver en liste af observationer ud fra Observationstabellen i databasen
     /// </summary>
     /// <returns>returnere en liste af observationer eller en tom liste</returns>
-    public List<Observation> GetAll(bool ofToday=false,string? Sortbydate=null)
+    public List<Observation> GetAll(bool ofToday=false,string? Sortbydate=null,string AnimalName=null)
     {
         List<Observation> observations = new List<Observation>(context.Observations);
         if (ofToday)
@@ -49,11 +49,13 @@ public class ObservationsRepoDB
 
             };
         }
+        if (AnimalName != null)
+            observations=observations.Where(a => a.AnimalName.Contains(AnimalName,StringComparison.CurrentCultureIgnoreCase)).ToList();
        return observations;
     }
 
     /// <summary>
-    /// Finder en specifik Observation i databasen
+    /// Finder en specifik Observation i databasen ud fra id
     /// </summary>
     /// <param name="id">Et id som skal eksistere i observationsdatabasen for at hente en observation</param>
     /// <returns>returnere en observation eller Null</returns>
@@ -61,4 +63,6 @@ public class ObservationsRepoDB
     {
         return context.Observations.FirstOrDefault(i => i.ID == id);
     }
+
+    
 }
