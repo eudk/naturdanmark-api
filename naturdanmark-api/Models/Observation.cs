@@ -1,5 +1,6 @@
 ﻿using System.Security.Cryptography.X509Certificates;
 
+
 namespace naturdanmark_api.Models
 {
     public class Observation
@@ -63,7 +64,7 @@ namespace naturdanmark_api.Models
 
         public void ValidateDateTime()
         {
-            if (Date.Date < DateTime.Now.Date)
+            if (Date.Date < DateTime.Now.Date.AddDays(-7))
             {
                 throw new ArgumentOutOfRangeException();
             }
@@ -81,6 +82,7 @@ namespace naturdanmark_api.Models
             ValidateAnimalName();
             ValidateLatitude();
             ValidateLongitude();
+            ValidateDateTime()
         }
     }
 }
