@@ -82,7 +82,7 @@ namespace naturdanmark_api.Models
             ValidateAnimalName();
             ValidateLatitude();
             ValidateLongitude();
-            ValidateDateTime()
+            ValidateDateTime();
         }
     }
 }
