@@ -21,6 +21,7 @@ public class ObservationsRepoDB
     {
         obs.ValidateAll();
         obs.ID = 0;
+        obs.PostingDate = DateTime.Now;
         context.Observations.Add(obs);
         context.SaveChanges();
         return obs;

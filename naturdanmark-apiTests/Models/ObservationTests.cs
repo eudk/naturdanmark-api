@@ -59,5 +59,18 @@ namespace naturdanmark_api.Models.Tests
             Assert.ThrowsException<ArgumentOutOfRangeException>(() => obs6.ValidateLatitude());
 
         }
+
+        [TestMethod]
+        public void ValidateDateTest()
+        {
+            Observation obs1 = new Observation {Date=DateTime.Now};
+            Observation obs2 = new Observation {Date=DateTime.Now.AddMinutes(16) };
+            Observation obs3 = new Observation {Date = DateTime.Now.AddDays(1) };
+            Observation obs4 = new Observation {Date= new DateTime(2023,5,5) };
+            obs1.ValidateDateTime();
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => obs2.ValidateDateTime());
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => obs3.ValidateDateTime());
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => obs4.ValidateDateTime());
+        }
     }
 }

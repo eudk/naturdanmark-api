@@ -32,10 +32,16 @@ namespace naturdanmark_api.Repositories.Tests
         }
 
         [TestMethod()]
+        public void GetAllTest()
+        {
+            _repo.GetAll();
+        }
+
+        [TestMethod()]
         public void AddTest()
         {
             int before=_repo.GetAll().Count();
-            _repo.Add(new Observation { AnimalName = "Animal", ID = 1, Picture = null, Date = DateTime.Now, Description = "A", Latitude = 0, Longitude = 0 });
+            _repo.Add(new Observation { AnimalName = "Animal", ID = 1, Picture = null, Date = DateTime.Now, Description = "AB", Latitude = 0, Longitude = 0 });
             Assert.AreEqual(before+1, _repo.GetAll().Count());
         }
 
@@ -43,8 +49,8 @@ namespace naturdanmark_api.Repositories.Tests
         public void GetbyidTest()
         {
             
-            Observation? obs = _repo.Getbyid(2);
-            Observation obsmimic = _repo.GetAll()[1];
+            Observation? obs = _repo.Getbyid(3);
+            Observation obsmimic = _repo.GetAll()[2];
             Observation? obsNull = _repo.Getbyid(99);
             Assert.AreEqual(obsmimic, obs);
             Assert.IsNull(obsNull);

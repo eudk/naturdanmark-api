@@ -18,6 +18,8 @@ namespace naturdanmark_api.Models
 
         public string? Picture { get; set; }
 
+        public DateTime PostingDate { get; set; }
+
         /// <summary>
         /// Kaster en Exception hvis AnimalName i en Observation er en tom string eller lig med Null
         /// </summary>
@@ -54,6 +56,18 @@ namespace naturdanmark_api.Models
         public void ValidateLatitude()
         {
             if(Latitude > 90 || Latitude < -90)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        public void ValidateDateTime()
+        {
+            if (Date.Date < DateTime.Now.Date)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+            if(Date > DateTime.Now.AddMinutes(15))
             {
                 throw new ArgumentOutOfRangeException();
             }
