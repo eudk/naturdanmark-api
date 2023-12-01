@@ -35,7 +35,7 @@ public class ObservationsRepoDB
     {
         List<Observation> observations=new List<Observation>(context.Observations);
         if (ofToday)
-            observations = observations.Where(a => a.PostingDate == DateTime.Now.Date).ToList();
+            observations = observations.Where(a => a.PostingDate.Date == DateTime.Now.Date).ToList();
         if(Sortbydate!=null)
         {
             Sortbydate = Sortbydate.ToLower();
