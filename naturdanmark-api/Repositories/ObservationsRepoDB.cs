@@ -45,7 +45,7 @@ public class ObservationsRepoDB
                 "datedesc" => observations.OrderByDescending(a => a.Date).ToList(),
                 _ => throw new ArgumentException()
 
-            } ;
+            };
         }
        return observations;
     }

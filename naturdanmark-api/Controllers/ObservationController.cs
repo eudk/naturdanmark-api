@@ -23,9 +23,9 @@ namespace naturdanmark_api.Controllers
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        public ActionResult<List<Observation>> GetObservations()
+        public ActionResult<List<Observation>> GetObservations([FromQuery] bool fromToday, [FromQuery] string? nameFilter)
         {
-            return _observationrepo.GetAll();
+            return _observationrepo.GetAll(fromToday, nameFilter);
         }
 
         /// <summary>
