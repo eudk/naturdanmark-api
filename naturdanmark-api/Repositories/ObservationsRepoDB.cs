@@ -35,14 +35,14 @@ public class ObservationsRepoDB
     {
         List<Observation> observations=new List<Observation>(context.Observations);
         if (ofToday)
-            observations.Where(a => a.PostingDate == DateTime.Now.Date).ToList();
+            observations = observations.Where(a => a.PostingDate == DateTime.Now.Date).ToList();
         if(Sortbydate!=null)
         {
             Sortbydate = Sortbydate.ToLower();
             observations = Sortbydate switch
             {
-                "dateasc" => observations.OrderBy(a => a.PostingDate).ToList(),
-                "datedesc" => observations.OrderByDescending(a => a.PostingDate).ToList(),
+                "dateasc" => observations.OrderBy(a => a.Date).ToList(),
+                "datedesc" => observations.OrderByDescending(a => a.Date).ToList(),
                 _ => throw new ArgumentException()
 
             } ;

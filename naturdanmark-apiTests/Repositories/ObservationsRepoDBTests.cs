@@ -34,7 +34,13 @@ namespace naturdanmark_api.Repositories.Tests
         [TestMethod()]
         public void GetAllTest()
         {
-
+            List<Observation> observations = _repo.GetAll();
+            List<Observation> observationFromToday = _repo.GetAll(true);
+            List<Observation> observationSortedByDateAsc = _repo.GetAll(false, "dateasc");
+            List<Observation> observationSortedByDateDesc= _repo.GetAll(false, "datedesc");
+            Assert.AreNotEqual(observations.Count(), observationFromToday.Count());
+            Assert.AreEqual(observationSortedByDateAsc[observations.Count() - 1], observationSortedByDateDesc[0]);
+            Assert.ThrowsException<ArgumentException>(() => _repo.GetAll(false, "ghghghhg"));
         }
 
         [TestMethod()]
