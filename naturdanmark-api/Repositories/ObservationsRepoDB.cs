@@ -31,9 +31,23 @@ public class ObservationsRepoDB
     /// Laver en liste af observationer ud fra Observationstabellen i databasen
     /// </summary>
     /// <returns>returnere en liste af observationer eller en tom liste</returns>
-    public List<Observation> GetAll()
+    public List<Observation> GetAll(bool ofToday=false,string? Sortbydate=null)
     {
-        return new List<Observation>(context.Observations);
+        List<Observation> observations=new List<Observation>(context.Observations);
+        if (ofToday)
+            observations.Where(a => a.PostingDate == DateTime.Now.Date).ToList();
+        if(Sortbydate!=null)
+        {
+            Sortbydate = Sortbydate.ToLower();
+            observations = Sortbydate switch
+            {
+                "dateasc" => observations.OrderBy(a => a.PostingDate).ToList(),
+                "datedesc" => observations.OrderByDescending(a => a.PostingDate).ToList(),
+                _ => throw new ArgumentException()
+
+            } ;
+        }
+       return observations;
     }
 
     /// <summary>

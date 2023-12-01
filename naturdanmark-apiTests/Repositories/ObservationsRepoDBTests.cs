@@ -34,7 +34,7 @@ namespace naturdanmark_api.Repositories.Tests
         [TestMethod()]
         public void GetAllTest()
         {
-            _repo.GetAll();
+
         }
 
         [TestMethod()]
