@@ -33,7 +33,7 @@ public class ObservationsRepoDB
     /// <returns>returnere en liste af observationer eller en tom liste</returns>
     public List<Observation> GetAll(bool ofToday=false,string? Sortbydate=null)
     {
-        List<Observation> observations=new List<Observation>(context.Observations);
+        List<Observation> observations = new List<Observation>(context.Observations);
         if (ofToday)
         {
             observations = observations.Where(a => a.Date >= DateTime.Now.AddHours(-24)).ToList();
