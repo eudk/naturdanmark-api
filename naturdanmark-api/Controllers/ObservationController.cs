@@ -24,7 +24,7 @@ namespace naturdanmark_api.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public ActionResult<List<Observation>> GetObservations([FromQuery] bool fromToday, [FromQuery] string? sortMethod)
+        public ActionResult<List<Observation>> GetObservations([FromQuery] bool fromToday, [FromQuery] string? sortMethod, [FromQuery] int amount=int.MaxValue)
         {
             try
             {
@@ -34,6 +34,7 @@ namespace naturdanmark_api.Controllers
                 {
                     return NoContent();
                 }
+                observations = _observationrepo.GetAll(fromToday, sortMethod).Take(amount).ToList();
 
                 return Ok(observations);
 
