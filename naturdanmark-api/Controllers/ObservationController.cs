@@ -24,11 +24,11 @@ namespace naturdanmark_api.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public ActionResult<List<Observation>> GetObservations([FromQuery] bool fromToday, [FromQuery] string? nameFilter)
+        public ActionResult<List<Observation>> GetObservations([FromQuery] bool fromToday, [FromQuery] string? sortMethod)
         {
             try
             {
-                List<Observation> observations = _observationrepo.GetAll(fromToday, nameFilter);
+                List<Observation> observations = _observationrepo.GetAll(fromToday, sortMethod);
 
                 if (observations.Count == 0)
                 {
