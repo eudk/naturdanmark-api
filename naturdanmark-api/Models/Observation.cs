@@ -97,6 +97,7 @@ namespace naturdanmark_api.Models
             ValidateLatitude();
             ValidateLongitude();
             ValidateDateTime();
+            ValidateUsername();
         }
     }
 }
