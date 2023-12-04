@@ -30,11 +30,11 @@ namespace naturdanmark_api.Models
         /// <exception cref="ArgumentOutOfRangeException">hvis AnimalName er en tom string kastes denne exception</exception>
         public void ValidateAnimalName()
         {
-            if(AnimalName==null)
+            if (AnimalName == null)
             {
                 throw new ArgumentNullException();
             }
-            if(AnimalName=="")
+            if (AnimalName == "")
             {
                 throw new ArgumentOutOfRangeException();
             }
@@ -46,7 +46,7 @@ namespace naturdanmark_api.Models
         /// <exception cref="ArgumentOutOfRangeException"> kaster exception videre</exception>
         public void ValidateLongitude()
         {
-            if(Longitude > 180 || Longitude < -180)
+            if (Longitude > 180 || Longitude < -180)
             {
                 throw new ArgumentOutOfRangeException();
             }
@@ -58,7 +58,7 @@ namespace naturdanmark_api.Models
         /// <exception cref="ArgumentOutOfRangeException">laver en exception hvis Lattiude er mellem 90 og -90 grader</exception>
         public void ValidateLatitude()
         {
-            if(Latitude > 90 || Latitude < -90)
+            if (Latitude > 90 || Latitude < -90)
             {
                 throw new ArgumentOutOfRangeException();
             }
@@ -70,7 +70,7 @@ namespace naturdanmark_api.Models
             {
                 throw new ArgumentOutOfRangeException();
             }
-            if(Date > DateTime.Now.AddMinutes(15))
+            if (Date > DateTime.Now.AddMinutes(15))
             {
                 throw new ArgumentOutOfRangeException();
             }
