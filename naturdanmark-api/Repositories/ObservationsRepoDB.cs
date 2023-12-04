@@ -31,7 +31,7 @@ public class ObservationsRepoDB
     /// Laver en liste af observationer ud fra Observationstabellen i databasen
     /// </summary>
     /// <returns>returnere en liste af observationer eller en tom liste</returns>
-    public List<Observation> GetAll(bool ofToday=false, string? SortByDate=null, string AnimalName=null)
+    public List<Observation> GetAll(bool ofToday = false, string? SortByDate = null, string AnimalName = null)
     {
         List<Observation> observations = new List<Observation>(context.Observations);
         if (ofToday)
@@ -45,7 +45,7 @@ public class ObservationsRepoDB
             {
                 "dateasc" => observations.OrderBy(a => a.Date).ToList(),
                 "datedesc" => observations.OrderByDescending(a => a.Date).ToList(),
-                _ => throw new ArgumentException()
+                _ => throw new ArgumentException("Invalid SortBy method.")
 
             };
         }
