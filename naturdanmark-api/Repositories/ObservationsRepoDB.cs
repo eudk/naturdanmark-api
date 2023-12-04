@@ -31,7 +31,7 @@ public class ObservationsRepoDB
     /// Laver en liste af observationer ud fra Observationstabellen i databasen
     /// </summary>
     /// <returns>returnere en liste af observationer eller en tom liste</returns>
-    public List<Observation> GetAll(bool ofToday=false,string? SortByDate=null,string AnimalName=null)
+    public List<Observation> GetAll(bool ofToday=false, string? SortByDate=null, string AnimalName=null)
     {
         List<Observation> observations = new List<Observation>(context.Observations);
         if (ofToday)
@@ -50,8 +50,10 @@ public class ObservationsRepoDB
             };
         }
         if (AnimalName != null)
-            observations = observations.Where(a => a.AnimalName.Contains(AnimalName,StringComparison.CurrentCultureIgnoreCase)).ToList();
-       return observations;
+        {
+            observations = observations.Where(a => a.AnimalName.Contains(AnimalName, StringComparison.CurrentCultureIgnoreCase)).ToList();
+        }
+        return observations;
     }
 
     /// <summary>
