@@ -7,6 +7,12 @@
         public int ObservationID { get; set; }
         public byte[] Photo { get; set; }
 
+        public Image(byte[] photo, int id = 0)
+        {
+            ObservationID = id;
+            Photo = photo;
+        }
+
         public void validate()
         {
             if (Photo == null) {

@@ -18,13 +18,13 @@ namespace naturdanmark_api.Models.Tests
             byte[] small = new byte[1024];
             byte[] tooBig = new byte[1024*1024*maxSize + 1];
             byte[] justBarely = new byte[1024*1024*maxSize];
-            Image image = new Image(1, small);
+            Image image = new Image(small);
             image.validate();
-            image = new Image(2, tooBig);
+            image = new Image(tooBig);
             Assert.ThrowsException<ArgumentException>(() => image.validate());
-            image = new Image(3, justBarely);
+            image = new Image(justBarely);
             image.validate();
-            image = new Image(3, null);
+            image = new Image(null);
             Assert.ThrowsException<ArgumentNullException>(() => image.validate());
         }
     }
