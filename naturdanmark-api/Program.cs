@@ -19,10 +19,12 @@ builder.Services.AddCors(options =>
 }
 );
 
-var optionsbuilder = new DbContextOptionsBuilder<ImageContext>();
+var optionsbuilder = new DbContextOptionsBuilder<ObservationContext>();
 optionsbuilder.UseSqlServer(Secret.secret);
-ImageContext dbcontext = new(optionsbuilder.Options);
-builder.Services.AddSingleton<ObservationsRepoDB>(new ObservationsRepoDB(dbcontext));
+ObservationContext obsdbcontext = new(optionsbuilder.Options);
+builder.Services.AddSingleton<ObservationsRepoDB>(new ObservationsRepoDB(obsdbcontext));
+ImageContext imgdbcontext = new(optionsbuilder.Options);
+builder.Services.AddSingleton<ObservationsRepoDB>(new ObservationsRepoDB(obsdbcontext));
 
 var app = builder.Build();
 
