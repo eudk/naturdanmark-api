@@ -5,10 +5,10 @@ using Context;
 public class ImageRepo
 {
 
-    private readonly ImageContext context;
+    private readonly ObservationContext context;
     private int size;
 
-    public ImageRepo(ImageContext dbcontext)
+    public ImageRepo(ObservationContext dbcontext)
     {
         context = dbcontext;
         size = 0;
@@ -18,11 +18,11 @@ public class ImageRepo
     /// Add an image to the DB
     /// </summary>
     /// <param name="img">Represents an image</param>
-    /// <returns> returnere en observation</returns>
+    /// <returns> Returns the added image object</returns>
     public Image Add(Image img)
     {
         img.validate();
-        context.Images.Add(img);
+        context.Observationfotos.Add(img);
         context.SaveChanges();
         size++;
         return img;
@@ -32,10 +32,10 @@ public class ImageRepo
     /// Fetch an image given id
     /// </summary>
     /// <param name="id">Id of the image to fetch</param>
-    /// <returns>returnere en observation eller Null</returns>
+    /// <returns>Returns Image of id, or null if not found</returns>
     public Image? GetById(int id)
     {
-        return context.Images.FirstOrDefault(i => i.ObservationID == id);
+        return context.Observationfotos.FirstOrDefault(i => i.ObservationID == id);
     }
 
     public int Count()

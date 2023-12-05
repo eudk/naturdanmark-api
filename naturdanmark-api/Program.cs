@@ -23,11 +23,7 @@ var optionsbuilder = new DbContextOptionsBuilder<ObservationContext>();
 optionsbuilder.UseSqlServer(Secret.secret);
 ObservationContext obsdbcontext = new(optionsbuilder.Options);
 builder.Services.AddSingleton<ObservationsRepoDB>(new ObservationsRepoDB(obsdbcontext));
-var optionsbuilder2 = new DbContextOptionsBuilder<ImageContext>();
-optionsbuilder2.UseSqlServer(Secret.secret);
-ImageContext imgdbcontext = new(optionsbuilder2.Options);
-builder.Services.AddSingleton<ObservationsRepoDB>(new ObservationsRepoDB(obsdbcontext));
-builder.Services.AddSingleton<CoordinateRepo>(new CoordinateRepo());
+builder.Services.AddSingleton<ImageRepo>(new ImageRepo(obsdbcontext));
 
 var app = builder.Build();
 
