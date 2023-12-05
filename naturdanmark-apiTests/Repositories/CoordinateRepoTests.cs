@@ -25,8 +25,8 @@ namespace naturdanmark_apiTests.Repositories
         public void AddTest()
         {
             CoordinateRepo repo = new CoordinateRepo();
-            int before = repo.GetAll().Count();
-            repo.Add(2,new Coordinates { DeviceID = 2, Latitude = 45, Longitude = 45, Date = DateTime.Now });
+            int before = repo.GetAll().Count;
+            repo.Add(new Coordinates { DeviceID = 2, Latitude = 45, Longitude = 45, Date = DateTime.Now });
             Assert.AreEqual(before + 1, repo.GetAll().Count);
         }
 
