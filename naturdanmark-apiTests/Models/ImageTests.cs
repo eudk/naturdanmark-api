@@ -21,9 +21,11 @@ namespace naturdanmark_api.Models.Tests
             Image image = new Image(1, small);
             image.validate();
             image = new Image(2, tooBig);
-            Assert.ThrowsException<ArgumentException>(() => { image.validate() };);
+            Assert.ThrowsException<ArgumentException>(() => image.validate());
             image = new Image(3, justBarely);
             image.validate();
+            image = new Image(3, null);
+            Assert.ThrowsException<ArgumentNullException>(() => image.validate());
         }
     }
 }
