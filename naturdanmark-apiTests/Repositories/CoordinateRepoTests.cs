@@ -17,7 +17,7 @@ namespace naturdanmark_apiTests.Repositories
         public void GetByIdTest()
         {
             CoordinateRepo repo = new CoordinateRepo();
-            Assert.AreEqual(repo.GetAll()[0], repo.GetById(1));
+            Assert.IsTrue(repo.GetAll().ContainsValue(repo.GetById(1)));
             Assert.IsNull(repo.GetById(-1));
         }
 

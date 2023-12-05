@@ -12,7 +12,7 @@ namespace naturdanmark_api.Repositories
 
         public CoordinateRepo()
         {
-            Repo.Add(1, new Coordinates { DeviceID = 1, Longitude = 170, Latitude = 45 });
+            Repo.Add(idcounter++, new Coordinates { DeviceID = 1, Longitude = 170, Latitude = 45 });
 
         }
 
@@ -21,7 +21,7 @@ namespace naturdanmark_api.Repositories
             return new Hashtable(Repo);
         }
 
-        public Coordinates GetById( int id)
+        public Coordinates? GetById( int id)
         {
             return (Coordinates)Repo[id];
         }
@@ -29,13 +29,24 @@ namespace naturdanmark_api.Repositories
         public Coordinates Add(Coordinates cor)
         {
             cor.DeviceID = idcounter++;
+            cor.Date = DateTime.Now;
             Repo.Add(cor.DeviceID, cor);
             return cor;
         }
 
-        public Coordinates Update(int id, Coordinates cor)
+        public Coordinates Update(int id, Coordinates newcor)
         {
-            return cor;
+            Coordinates? oldcor = GetById(id);
+            if (oldcor != null) 
+            {
+                newcor.ValidateLatitude();
+                newcor.ValidateLongitude();
+                oldcor.Date = newcor.Date;
+                oldcor.Longitude = newcor.Longitude;
+                oldcor.Longitude = newcor.Latitude;
+            }
+            return null;
+
         }
     }
 }
