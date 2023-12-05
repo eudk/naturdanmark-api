@@ -1,6 +1,6 @@
 ﻿namespace naturdanmark_api.Models
 {
-    public class Koordinates
+    public class Coordinates
     {
 
         public void ValidateLongitude()
