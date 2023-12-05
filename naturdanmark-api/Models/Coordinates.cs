@@ -26,5 +26,11 @@
                 throw new ArgumentOutOfRangeException();
             }
         }
+
+        public void ValidateAll()
+        {
+            ValidateLatitude();
+            ValidateLongitude();
+        }
     }
 }

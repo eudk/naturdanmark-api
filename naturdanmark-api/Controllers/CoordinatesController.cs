@@ -16,22 +16,47 @@ namespace naturdanmark_api.Controllers
                 
         }
 
+
         [HttpGet("{id}")]
-        public Coordinates GetByID(int id)
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult<Coordinates> GetByID(int id)
         {
-            return coordinateRepo.GetById(id);
+            Coordinates? cor = coordinateRepo.GetById(id);
+            if (cor == null)
+                return NotFound();
+            return Ok(cor);
         }
 
         [HttpPost]
-        public Coordinates Post(Coordinates cor)
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public ActionResult<Coordinates> Post([FromBody] Coordinates cor)
         {
-            return coordinateRepo.Add(cor);
+            try
+            {
+                return Ok(coordinateRepo.Add(cor));
+            }
+            catch(ArgumentOutOfRangeException)
+            {
+                return BadRequest();
+            }
+
         }
 
         [HttpPut]
-        public Coordinates Put(Coordinates cor,int id)
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public ActionResult<Coordinates> Put([FromBody] Coordinates cor,int id)
         {
-            return coordinateRepo.Update(id, cor);
+            try
+            {
+                return Ok(coordinateRepo.Update(id,cor));
+            }
+            catch(ArgumentOutOfRangeException ex) 
+            {
+                return BadRequest();
+            }
         }
     }
 }

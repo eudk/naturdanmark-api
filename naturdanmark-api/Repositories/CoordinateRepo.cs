@@ -30,6 +30,7 @@ namespace naturdanmark_api.Repositories
         {
             cor.DeviceID = idcounter++;
             cor.Date = DateTime.Now;
+            cor.ValidateAll();
             Repo.Add(cor.DeviceID, cor);
             return cor;
         }
@@ -39,9 +40,8 @@ namespace naturdanmark_api.Repositories
             Coordinates? oldcor = GetById(id);
             if (oldcor != null) 
             {
-                newcor.ValidateLatitude();
-                newcor.ValidateLongitude();
-                oldcor.Date = newcor.Date;
+                newcor.ValidateAll();
+                oldcor.Date =DateTime.Now;
                 oldcor.Longitude = newcor.Longitude;
                 oldcor.Longitude = newcor.Latitude;
             }
