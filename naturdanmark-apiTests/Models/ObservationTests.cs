@@ -67,7 +67,7 @@ namespace naturdanmark_api.Models.Tests
             Observation obs2 = new Observation { Date = DateTime.Now.AddMinutes(16) };
             Observation obs3 = new Observation { Date = DateTime.Now.AddDays(1) };
             Observation obs4 = new Observation { Date = new DateTime(2023, 11, 23) };
-            Observation obs5 = new Observation { Date = new DateTime(2023, 11, 25) };
+            Observation obs5 = new Observation { Date = new DateTime(2023, 11, 29) };
             obs1.ValidateDateTime();
             obs5.ValidateDateTime();
             Assert.ThrowsException<ArgumentOutOfRangeException>(() => obs2.ValidateDateTime());
