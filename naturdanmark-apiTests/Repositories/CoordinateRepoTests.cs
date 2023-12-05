@@ -18,7 +18,7 @@ namespace naturdanmark_apiTests.Repositories
         {
             CoordinateRepo repo = new CoordinateRepo();
             Assert.AreEqual(repo.GetAll()[0], repo.GetById(1));
-            Assert.IsNull(repo.GetById(-1);
+            Assert.IsNull(repo.GetById(-1));
         }
 
         [TestMethod()]
@@ -38,7 +38,7 @@ namespace naturdanmark_apiTests.Repositories
             Coordinates Corold = repo.GetById(1);
             Coordinates corupdated=repo.Update(1, new Coordinates { DeviceID = 1, Date = DateTime.Now, Longitude = 45, Latitude = 45 });
             Assert.AreEqual(repo.GetAll()[0], corupdated);
-            Assert.IsNull(repo.Update(100000,newCor);
+            Assert.IsNull(repo.Update(10000,corupdated));
 
         }
     }

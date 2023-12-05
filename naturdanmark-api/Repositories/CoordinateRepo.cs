@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Azure.Core;
 using naturdanmark_api.Models;
 
 namespace naturdanmark_api.Repositories
@@ -15,24 +16,26 @@ namespace naturdanmark_api.Repositories
 
         }
 
-        public void GetAll()
+        public Hashtable GetAll()
         {
-
+            return new Hashtable(Repo);
         }
 
-        public void GetById()
+        public Coordinates GetById( int id)
         {
-
+            return (Coordinates)Repo[id];
         }
 
-        public void Add()
+        public Coordinates Add(Coordinates cor)
         {
-
+            cor.DeviceID = idcounter++;
+            Repo.Add(cor.DeviceID, cor);
+            return cor;
         }
 
-        public void Update()
+        public Coordinates Update(int id, Coordinates cor)
         {
-
+            return cor;
         }
     }
 }
