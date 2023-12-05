@@ -65,7 +65,6 @@ namespace naturdanmark_api.Controllers
             return Ok(obs);
         }
 
-
         /// <summary>
         /// Gemmer en Observation i ObservationsTabellen
         /// </summary>
