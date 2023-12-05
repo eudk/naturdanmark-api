@@ -24,7 +24,7 @@ namespace naturdanmark_api.Repositories.Tests
         {
             if(useDatabase)
             {
-                var optionsbuilder = new DbContextOptionsBuilder<ImageContext>();
+                var optionsbuilder = new DbContextOptionsBuilder<ObservationContext>();
                 optionsbuilder.UseSqlServer(Secret.secret);
                 ImageContext dbcontext = new(optionsbuilder.Options);
                 _repo = new ObservationsRepoDB(dbcontext);
