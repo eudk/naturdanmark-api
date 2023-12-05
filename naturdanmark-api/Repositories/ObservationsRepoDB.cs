@@ -5,9 +5,9 @@ using Context;
 public class ObservationsRepoDB
 {
 
-    private readonly ImageContext context;
+    private readonly ObservationContext context;
 
-    public ObservationsRepoDB(ImageContext dbcontext)
+    public ObservationsRepoDB(ObservationContext dbcontext)
     {
         context = dbcontext;
     }
