@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace naturdanmark_apiTests.Models
 {
+    [TestClass()]
     public class CoordinatesTest
     {
         [TestMethod]
