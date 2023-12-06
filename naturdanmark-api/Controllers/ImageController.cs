@@ -25,7 +25,7 @@ namespace naturdanmark_api.Controllers
             try
             {
                 img = _repo.Add(img);
-                return Created($"{img.ObservationID}", img);
+                return Created($"{img.OberservationID}", img);
             }
             catch (ArgumentNullException)
             {

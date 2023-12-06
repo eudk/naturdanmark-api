@@ -5,12 +5,12 @@ namespace naturdanmark_api.Models
     public class Image
     {
         [Key]
-        public int ObservationID { get; set; }
+        public int OberservationID { get; set; }
         public byte[]? Foto { get; set; }
 
-        public Image(byte[] foto = null, int observationID = 0)
+        public Image(byte[] foto = null, int oberservationID = 1)
         {
-            ObservationID = observationID;
+            OberservationID = oberservationID;
             Foto = foto;
         }
 

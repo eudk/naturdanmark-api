@@ -6,12 +6,10 @@ public class ImageRepo
 {
 
     private readonly ObservationContext context;
-    private int size;
 
     public ImageRepo(ObservationContext dbcontext)
     {
         context = dbcontext;
-        size = 0;
     }
 
     /// <summary>
@@ -21,10 +19,14 @@ public class ImageRepo
     /// <returns> Returns the added image object</returns>
     public Image Add(Image img)
     {
+        if(img == null)
+        {
+            throw new ArgumentNullException(nameof(img));
+        }
         img.validate();
-        context.Observationfotos.Add(img);
+        img.OberservationID = context.Observaitonfotos.Count() + 1;
+        context.Observaitonfotos.Add(img);
         context.SaveChanges();
-        size++;
         return img;
     }
 
@@ -35,11 +37,11 @@ public class ImageRepo
     /// <returns>Returns Image of id, or null if not found</returns>
     public Image? GetById(int id)
     {
-        return context.Observationfotos.FirstOrDefault(i => i.ObservationID == id);
+        return context.Observaitonfotos.FirstOrDefault(i => i.OberservationID == id);
     }
 
     public int Count()
     {
-        return size;
+        return context.Observaitonfotos.Count();
     }
 }

@@ -40,8 +40,8 @@ namespace naturdanmark_api.Repositories.Tests
             int after = _repo.Count();
             Assert.AreEqual(before + 1, after);
             Assert.AreEqual(image, value);
-            Image? expectNull = _repo.Add(null);
-            Assert.IsNull(expectNull);
+            Assert.ThrowsException<ArgumentNullException>(() => _repo.Add(new Image(null)));
+            Assert.ThrowsException<ArgumentNullException>(() => _repo.Add(null));
         }
 
         public void ImageRepoGetByIdTest()
@@ -49,7 +49,7 @@ namespace naturdanmark_api.Repositories.Tests
             Image image = new Image(new byte[1]);
             Image? value = _repo.Add(image);
             Assert.IsNotNull(value);
-            value = _repo.GetById(value.ObservationID);
+            value = _repo.GetById(value.OberservationID);
             Assert.AreEqual(image, value);
             value = _repo.GetById(-1);
             Assert.IsNull(value);
