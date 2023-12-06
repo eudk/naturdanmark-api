@@ -43,6 +43,7 @@ namespace naturdanmark_api.Repositories
                 oldcor.Date =DateTime.Now;
                 oldcor.Longitude = newcor.Longitude;
                 oldcor.Longitude = newcor.Latitude;
+                return newcor;
             }
             return null;
 
