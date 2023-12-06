@@ -38,7 +38,6 @@ namespace naturdanmark_api.Repositories
         public Coordinates Update(int id, Coordinates newcor)
         {
             Coordinates? oldcor = GetById(id);
-            newcor.ValidateAll();
             if (oldcor != null) 
             {
                 oldcor.Date =DateTime.Now;
