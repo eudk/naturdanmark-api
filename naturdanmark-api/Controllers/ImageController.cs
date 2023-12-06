@@ -19,9 +19,8 @@ namespace naturdanmark_api.Controllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public ActionResult<Observation> Post([FromBody] byte[] raw)
+        public ActionResult<Observation> Post([FromBody] Image img)
         {
-            Image img = new(raw);
             try
             {
                 img = _repo.Add(img);
