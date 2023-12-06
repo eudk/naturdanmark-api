@@ -44,7 +44,7 @@ namespace naturdanmark_api.Controllers
 
         }
 
-        [HttpPut]
+        [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public ActionResult<Coordinates> Put([FromBody] Coordinates cor,int id)
