@@ -34,7 +34,7 @@ namespace naturdanmark_api.Repositories.Tests
         [TestMethod()]
         public void ImageRepoAddTest()
         {
-            Image image = new Image(new byte[1]);
+            Image image = new Image("Test", 1, 0);
             int before = _repo.Count();
             Image value = _repo.Add(image);
             int after = _repo.Count();
@@ -46,10 +46,10 @@ namespace naturdanmark_api.Repositories.Tests
 
         public void ImageRepoGetByIdTest()
         {
-            Image image = new Image(new byte[1]);
+            Image image = new Image("Test", 1, 0);
             Image? value = _repo.Add(image);
             Assert.IsNotNull(value);
-            value = _repo.GetById(value.OberservationID);
+            value = _repo.GetById(value.ObservationID);
             Assert.AreEqual(image, value);
             value = _repo.GetById(-1);
             Assert.IsNull(value);

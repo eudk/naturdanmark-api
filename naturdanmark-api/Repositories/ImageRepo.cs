@@ -1,6 +1,7 @@
 ﻿namespace naturdanmark_api.Repositories;
 using naturdanmark_api.Models;
 using Context;
+using Microsoft.AspNetCore.Mvc;
 
 public class ImageRepo
 {
@@ -24,8 +25,7 @@ public class ImageRepo
             throw new ArgumentNullException(nameof(img));
         }
         img.validate();
-        img.OberservationID = context.Observaitonfotos.Count() + 1;
-        context.Observaitonfotos.Add(img);
+        context.Observationphotos.Add(img);
         context.SaveChanges();
         return img;
     }
@@ -37,11 +37,11 @@ public class ImageRepo
     /// <returns>Returns Image of id, or null if not found</returns>
     public Image? GetById(int id)
     {
-        return context.Observaitonfotos.FirstOrDefault(i => i.OberservationID == id);
+        return context.Observationphotos.FirstOrDefault(i => i.ObservationID == id);
     }
 
     public int Count()
     {
-        return context.Observaitonfotos.Count();
+        return context.Observationphotos.Count();
     }
 }

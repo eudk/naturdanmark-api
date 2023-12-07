@@ -14,15 +14,7 @@ namespace naturdanmark_api.Models.Tests
         [TestMethod()]
         public void ImageTest()
         {
-            const int maxSize = 8; //MB
-            byte[] small = new byte[1024];
-            byte[] tooBig = new byte[1024*1024*maxSize + 1];
-            byte[] justBarely = new byte[1024*1024*maxSize];
-            Image image = new Image(small);
-            image.validate();
-            image = new Image(tooBig);
-            Assert.ThrowsException<ArgumentException>(() => image.validate());
-            image = new Image(justBarely);
+            Image image = new Image("this is an image, trust");
             image.validate();
             image = new Image(null);
             Assert.ThrowsException<ArgumentNullException>(() => image.validate());

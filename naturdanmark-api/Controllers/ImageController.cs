@@ -24,7 +24,7 @@ namespace naturdanmark_api.Controllers
             try
             {
                 img = _repo.Add(img);
-                return Created($"{img.OberservationID}", img);
+                return Created($"{img.Id}", img);
             }
             catch (ArgumentNullException)
             {
@@ -36,7 +36,22 @@ namespace naturdanmark_api.Controllers
             }
         }
 
-        [HttpGet("{id}")]
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult Get([FromQuery] int id)
+        {
+            Image? img = _repo.GetById(id);
+
+            if (img == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(img);
+        }
+
+        /*[HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult Get(int id)
@@ -49,6 +64,6 @@ namespace naturdanmark_api.Controllers
             }
 
             return Ok(img);
-        }
+        }*/
     }
 }
