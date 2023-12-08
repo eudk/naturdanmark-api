@@ -24,6 +24,33 @@ namespace naturdanmark_api.Models
         public string UserName { get; set; }
 
         /// <summary>
+        /// Implementatuon of Haversine's formula to calculate distance. Returns 0 if longitude or latitude is null
+        /// </summary>
+        public double DistanceFrom(double? latitude,  double? longitude)
+        {
+            if (longitude == null || latitude == null)
+            {
+                return 0;
+            }
+            double lon2 = (double)longitude;
+            double lat2 = (double)latitude;
+            
+            int R = 6371000;
+            double φ1 = Latitude * Math.PI / 180;
+            double φ2 = lat2 * Math.PI / 180;
+            double Δφ = (lat2 - Latitude) * Math.PI / 180;
+            double Δλ = (lon2 - Longitude) * Math.PI / 180;
+
+            double a = Math.Sin(Δφ / 2) * Math.Sin(Δφ / 2) +
+                       Math.Cos(φ1) * Math.Cos(φ2) *
+                       Math.Sin(Δλ / 2) * Math.Sin(Δλ / 2);
+            double c = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1-a));
+            double d = R * c;
+
+            return d;
+        }
+        
+        /// <summary>
         /// Kaster en Exception hvis AnimalName i en Observation er en tom string eller lig med Null
         /// </summary>
         /// <exception cref="ArgumentNullException">hvis AnimalName er lig med Nul kastes denne exception</exception>

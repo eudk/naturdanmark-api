@@ -85,5 +85,20 @@ namespace naturdanmark_api.Models.Tests
             Assert.ThrowsException<ArgumentOutOfRangeException>(obs1.ValidateUsername);
             Assert.ThrowsException<ArgumentNullException>(obs3.ValidateUsername);
         }
+
+        [TestMethod]
+        public void TestDistance()
+        {
+            Observation obs = new Observation() { Latitude = 40.4568, Longitude = 73.9852};
+            double distance = obs.DistanceFrom(33.3333, 56.7877);
+            double expectedDistance = 1718000;
+            Assert.IsTrue((distance - expectedDistance) < 1000);
+            distance = obs.DistanceFrom(null, 1);
+            Assert.AreEqual(0, distance);
+            distance = obs.DistanceFrom(1, null);
+            Assert.AreEqual(0, distance);
+            distance = obs.DistanceFrom(null, null);
+            Assert.AreEqual(0, distance);
+        }
     }
 }
