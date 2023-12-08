@@ -46,7 +46,7 @@ public class ObservationsRepoDB
             {
                 "dateasc" => observations.OrderBy(a => a.Date).ToList(),
                 "datedesc" => observations.OrderByDescending(a => a.Date).ToList(),
-                "distance" => observations.OrderBy(a => a.DistanceFrom(longitude, latitude)).ToList(),
+                "distance" => observations.OrderBy(a => a.DistanceFrom(latitude, longitude)).ToList(),
                 _ => throw new ArgumentException("Invalid SortBy method.")
 
             };
