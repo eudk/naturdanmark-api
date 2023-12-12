@@ -11,6 +11,6 @@ namespace naturdanmark_api.Context
         }
 
         public DbSet<Observation> Observations { get; set; }
-        public DbSet<Image> Observaitonfotos { get; set; }
+        public DbSet<Image> Observationphotos { get; set; }
     }
 }
