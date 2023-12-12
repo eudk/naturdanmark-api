@@ -1,5 +1,6 @@
 ﻿namespace naturdanmark_api.Repositories;
 using naturdanmark_api.Models;
+using naturdanmark_api.Repositories;
 using Context;
 
 public class ObservationsRepoDB
