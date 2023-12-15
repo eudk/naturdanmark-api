@@ -362,3 +362,4 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /naturdanmark-api/Secret.cs
+/naturdanmark-api/Secret.cs
